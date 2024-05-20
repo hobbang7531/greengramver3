@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengramver3.userfollow.UserFollowMapper">
+    <insert id="postFollow">
+        INSERT INTO user_follow
+        SET from_user_id = #{signedUserId},
+            to_user_id = #{toUserId}
+    </insert>
+
+    <select id="getFollow">
+        SELECT from_user_id AS fromUserId, to_user_id AS toUserId, created_at AS createdAt
+        FROM user_follow
+    </select>
+
+    <delete id="delFollow">
+        DELETE
+        FROM user_follow
+        WHERE from_user_id = #{signedUserId}
+        AND   to_user_id = #{toUserId}
+    </delete>
+</mapper>
