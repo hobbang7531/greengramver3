@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     int postUser(SignUpReq p);
     User getUser(String uid);
+    UserInfoGetRes selProfileUserInfo(UserInfoGetReq p);
 }

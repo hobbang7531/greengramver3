@@ -54,4 +54,7 @@ public class UserService {
                 build();
     }
 
+    public UserInfoGetRes selProfileUserInfo(UserInfoGetReq p){
+        return mapper.selProfileUserInfo(p);
+    }
 }

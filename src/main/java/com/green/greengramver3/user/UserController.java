@@ -4,6 +4,7 @@ import com.green.greengramver3.common.ResultDto;
 import com.green.greengramver3.user.usermodel.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,5 +40,16 @@ public class UserController {
                 resultMsg("로그인 성공").
                 build();
 
+    }
+
+    @GetMapping("profile")
+    public ResultDto<UserInfoGetRes> selProfileUserInfo(@ParameterObject @ModelAttribute UserInfoGetReq p){
+        UserInfoGetRes result = service.selProfileUserInfo(p);
+
+        return ResultDto.<UserInfoGetRes>builder().
+                statusCode(HttpStatus.OK).
+                resultMsg(HttpStatus.OK.toString()).
+                resultData(result).
+                build();
     }
 }
