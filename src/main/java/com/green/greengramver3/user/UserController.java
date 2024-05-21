@@ -42,7 +42,7 @@ public class UserController {
 
     }
 
-    @GetMapping("profile")
+    @GetMapping
     public ResultDto<UserInfoGetRes> selProfileUserInfo(@ParameterObject @ModelAttribute UserInfoGetReq p){
         UserInfoGetRes result = service.selProfileUserInfo(p);
 

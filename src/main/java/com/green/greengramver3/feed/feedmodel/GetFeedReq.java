@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.BindParam;
 public class GetFeedReq extends Paging {
     private long feedId;
     private long signedUserId;
+    private Long profileUserId;
 
-    public GetFeedReq(Integer page, Integer size, @BindParam("signed_user_id") long signedUserId){
+    public GetFeedReq(Integer page, Integer size,
+                      @BindParam("signed_user_id") long signedUserId,
+                      @BindParam("profile_user_id") Long profileUserId){
         super(page, size == null ? GlobalConst.FEED_PAGING_SIZE : size);
         this.signedUserId = signedUserId;
+        this.profileUserId = profileUserId;
     }
 }

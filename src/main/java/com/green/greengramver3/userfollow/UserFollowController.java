@@ -1,7 +1,6 @@
 package com.green.greengramver3.userfollow;
 
 import com.green.greengramver3.common.ResultDto;
-import com.green.greengramver3.userfollow.userfollowmodel.GetFollowRes;
 import com.green.greengramver3.userfollow.userfollowmodel.FollowReq;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,17 +20,6 @@ public class UserFollowController {
         int result = service.postFollow(p);
 
         return ResultDto.<Integer>builder().
-                statusCode(HttpStatus.OK).
-                resultMsg(HttpStatus.OK.toString()).
-                resultData(result).
-                build();
-    }
-
-    @GetMapping
-    public ResultDto<GetFollowRes> getFollow(FollowReq p){
-        GetFollowRes result = service.getFollow(p);
-
-        return ResultDto.<GetFollowRes>builder().
                 statusCode(HttpStatus.OK).
                 resultMsg(HttpStatus.OK.toString()).
                 resultData(result).
