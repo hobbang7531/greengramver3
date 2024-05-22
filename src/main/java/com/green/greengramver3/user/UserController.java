@@ -52,4 +52,16 @@ public class UserController {
                 resultData(result).
                 build();
     }
+
+    @PatchMapping(value = "pic", consumes = "multipart/form-data")
+    public ResultDto<String> patchProfilePic(@ModelAttribute UserProfilePatchReq p){
+        String result = service.patchProfilePic(p);
+
+        return ResultDto.<String>builder().
+                statusCode(HttpStatus.OK).
+                resultMsg(HttpStatus.OK.toString()).
+                resultData(result).
+                build();
+
+    }
 }

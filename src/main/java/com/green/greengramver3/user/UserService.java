@@ -57,4 +57,26 @@ public class UserService {
     public UserInfoGetRes selProfileUserInfo(UserInfoGetReq p){
         return mapper.selProfileUserInfo(p);
     }
+
+    @Transactional
+    public String patchProfilePic(UserProfilePatchReq p){
+        String fileNm = customFileUtils.makeRandomFileName(p.getPic());
+        p.setPicName(fileNm);
+        mapper.updProfilePic(p);
+
+
+        try {
+            String midPath = String.format("user/%d", p.getSignedUserId());
+            String delAbsoluteFolderPath = String.format("%s%s", customFileUtils.uploadPath, midPath);
+            customFileUtils.deleteFolder(delAbsoluteFolderPath);
+
+            customFileUtils.makeFolder(midPath);
+            String filePath = String.format("%s/%s", midPath, fileNm);
+            customFileUtils.transferTo(p.getPic(), filePath);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return fileNm;
+    }
 }

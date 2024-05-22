@@ -32,6 +32,7 @@ public class FeedController {
                 build();
     }
 
+
     @GetMapping
     public ResultDto<List<GetFeedRes>> getFeed(@ParameterObject @ModelAttribute GetFeedReq p){
         log.info("p : {}", p);
