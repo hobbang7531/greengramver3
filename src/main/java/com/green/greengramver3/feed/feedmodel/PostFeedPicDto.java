@@ -12,5 +12,4 @@ public class PostFeedPicDto {
     private long feedId;
     @Builder.Default
     private List<String> fileNames = new ArrayList();
-
 }
