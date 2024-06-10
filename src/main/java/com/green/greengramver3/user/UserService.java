@@ -64,7 +64,6 @@ public class UserService {
         p.setPicName(fileNm);
         mapper.updProfilePic(p);
 
-
         try {
             String midPath = String.format("user/%d", p.getSignedUserId());
             String delAbsoluteFolderPath = String.format("%s%s", customFileUtils.uploadPath, midPath);
